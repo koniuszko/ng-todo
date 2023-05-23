@@ -1,3 +1,11 @@
-<div class="app" *ngIf="title">
-  TODO Set up the app
+<div class="theme-{{theme}}">
+  <div class="background">
+    <header class="header">
+      <div class="header_container">
+        <h1 class="logo">TODO</h1>
+        <button class="switcher" (click)="themeSwitch()">
+        </button>
+      </div>
+    </header>
+  </div>
 </div>
