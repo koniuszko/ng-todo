@@ -1,5 +1,7 @@
 import {Component, Input} from '@angular/core';
 import {ThemeSwitcherService} from "../../services/theme-switcher.service";
+import {TasksListService} from "../../services/tasks-list.service";
+import {Task} from "../../../data";
 
 
 @Component({
@@ -11,12 +13,25 @@ import {ThemeSwitcherService} from "../../services/theme-switcher.service";
 export class NewTaskInputComponent {
   @Input()
   theme: string;
+  taskNameInput: string = '';
 
-  constructor(private service: ThemeSwitcherService) {
-    this.theme = service.theme;
-    service.themeChange.subscribe((value) => {
+
+  constructor(private themeService: ThemeSwitcherService,
+              private tasksListService: TasksListService
+  ) {
+    this.theme = themeService.theme;
+    themeService.themeChange.subscribe((value) => {
       this.theme = value;
     });
   }
 
+  addTask() {
+    const newTask: Task = {
+      id: 20,
+      description: this.taskNameInput,
+      active: true,
+    }
+    this.tasksListService.addTask(newTask);
+    this.taskNameInput = '';
+  }
 }

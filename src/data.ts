@@ -1,10 +1,10 @@
-interface Task {
+export interface Task {
   id: number
   description: string
   active: boolean
 }
 
-export const tasks: Task[] = [
+export const TASKS: any = [
   {
     id: 1,
     description: "Complete online JavaScript course",
