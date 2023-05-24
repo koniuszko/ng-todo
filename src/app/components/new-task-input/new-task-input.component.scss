@@ -1,0 +1,94 @@
+@import "../../../styles.scss";
+
+
+.new_task {
+  @include setTheme($themes) {
+    background-color: themed("colorBoxBackground");
+  }
+  border-radius: 5px;
+  height: 48px;
+  width: 330px;
+  margin: 0 auto;
+  padding: 14px 20px;
+  display: flex;
+  align-items: center;
+}
+
+.add_button {
+  background-color: transparent;
+  border: none;
+}
+
+.add_item {
+  @include setTheme($themes) {
+    fill: themed("colorIcon");
+    border: 1px solid themed("colorIcon");
+  }
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  transition: 0.3s;
+}
+
+.task_field {
+  @include setTheme($themes) {
+    color: themed("colorCreateText");
+    background-color: themed("colorBoxBackground");
+  }
+  width: 255px;
+  padding-left: 12px;
+  outline: none;
+  border: none;
+}
+
+.task_field::placeholder {
+  @include setTheme($themes) {
+    color: themed("colorCreatePlaceholderText");
+  }
+  font-size: 12px;
+  letter-spacing: -0.17px;
+  font-weight: 400;
+  line-height: 20px;
+}
+
+@media (min-width: 560px) {
+  .new_task {
+    width: 540px;
+    height: 64px;
+    padding: 20px 24px;
+    align-items: center;
+  }
+
+  .task_field {
+    width: 455px;
+    height: 24px;
+    padding-left: 24px;
+    font-size: 18px;
+  }
+
+  .task_field::placeholder {
+    font-size: 18px;
+    letter-spacing: -0.25px;
+    line-height: 24px;
+  }
+
+  .add_button {
+    cursor: pointer;
+    transition: 0.3s;
+  }
+
+  .add_item {
+    @include setTheme($themes) {
+      color: themed("colorIcon");
+    }
+    width: 28px;
+    height: 28px;
+    transition: 0.3s;
+  }
+
+  .add_item:hover {
+    @include setTheme($themes) {
+      color: themed("colorFiltersHover");
+    }
+  }
+}
