@@ -21,10 +21,10 @@
   @include setTheme($themes) {
     fill: themed("colorIcon");
   }
-  width: 16px;
-  height: 16px;
+  width: 14px;
+  height: 14px;
   position: relative;
-  top: 1px;
+  top: 2px;
   user-select: none;
   pointer-events: none;
 

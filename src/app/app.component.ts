@@ -1,7 +1,8 @@
-import {Component, Input} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {ThemeSwitcherService} from "./services/theme-switcher.service";
 import {Task, TASKS} from "../data";
 import {TasksListService} from "./services/tasks-list.service";
+import {from, Observable} from "rxjs";
 
 @Component({
   selector: 'app-root',
@@ -9,16 +10,20 @@ import {TasksListService} from "./services/tasks-list.service";
   styleUrls: ['./app.component.scss'],
 
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   @Input()
   theme: string;
 
-  tasks: Task[];
+  tasks$!: Observable<Task[]>;
 
-  constructor(private themeService: ThemeSwitcherService,
-              private tasksListService: TasksListService) {
+  constructor(private themeService: ThemeSwitcherService, private taskListService: TasksListService) {
     this.theme = themeService.theme;
-    this.tasks = tasksListService.tasks;
+
+  }
+
+  ngOnInit() {
+    this.tasks$ = this.taskListService.observableTasks;
+    ;
   }
 
   switchTheme() {

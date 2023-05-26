@@ -9,7 +9,7 @@
     </header>
     <app-new-task-input></app-new-task-input>
     <section class="list">
-      <ul class="tasks_list" *ngFor="let task of tasks">
+      <ul class="tasks_list" *ngFor="let task of (tasks$ | async)">
         <app-task-item [task]="task">
         </app-task-item>
 
