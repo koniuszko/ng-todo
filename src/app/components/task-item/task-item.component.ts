@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {Task} from 'src/data';
 import {ThemeSwitcherService} from "../../services/theme-switcher.service";
 import {TasksListService} from "../../services/tasks-list.service";
@@ -13,15 +13,23 @@ export class TaskItemComponent {
   theme: string;
   @Input()
   task!: Task;
+  @Output()
+  taskDeleted: EventEmitter<Task> = new EventEmitter<Task>();
+  @Output()
+  taskDone: EventEmitter<Task> = new EventEmitter<Task>();
 
-  constructor(private service: ThemeSwitcherService, private taskListService: TasksListService) {
+  constructor(private service: ThemeSwitcherService) {
     this.theme = service.theme;
     service.themeChange.subscribe((value) => {
       this.theme = value;
     });
   }
 
+  changeTaskStatus() {
+    this.taskDone.emit(this.task);
+  }
+
   deleteTask() {
-    this.taskListService.deleteTask(this.task);
+    this.taskDeleted.emit(this.task);
   }
 }

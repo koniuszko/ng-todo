@@ -7,22 +7,32 @@ import {Observable} from "rxjs";
 })
 export class TasksListService {
   tasks: Task[] = TASKS;
-  observableTasks: Observable<Task[]>;
-  tasksChange: EventEmitter<Task[]> = new EventEmitter<Task[]>();
+  taskChange: EventEmitter<Task[]> = new EventEmitter<Task[]>();
 
   constructor() {
-    this.observableTasks = new Observable<Task[]>(subscriber => {
-      subscriber.next(this.tasks);
-    });
+  }
+
+  getTasks(): Task[] {
+    return this.tasks;
   }
 
   addTask(task: Task) {
     this.tasks.push(task);
   }
 
+  markAsDone(task: Task) {
+    this.tasks = this.tasks.map(t => {
+      if (t.id === task.id) {
+        t.active = !t.active;
+      }
+      return t;
+    });
+    this.taskChange.emit(this.tasks);
+    console.log(this.tasks)
+  }
+
   deleteTask(task: Task) {
     this.tasks = this.tasks.filter(t => t.id !== task.id);
-    this.tasksChange.emit(this.tasks);
-    console.log(this.tasks)
+    this.taskChange.emit(this.tasks);
   }
 }
