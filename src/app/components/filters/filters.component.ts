@@ -10,7 +10,7 @@ export class FiltersComponent {
   @Input()
   theme: string;
   @Input()
-  category: string = 'all';
+  category!: string;
   @Output()
   categoryChange: EventEmitter<string> = new EventEmitter<string>();
 

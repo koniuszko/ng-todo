@@ -15,19 +15,38 @@
 }
 
 .add_button {
+  @include setTheme($themes) {
+    border: 1px solid themed("colorIcon");
+  }
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
   background-color: transparent;
-  border: none;
+
+  &:hover {
+    @include setTheme($themes) {
+      border: 1px solid themed("colorFiltersHover");
+    }
+
+    svg {
+      @include setTheme($themes) {
+        fill: themed("colorFiltersHover");
+      }
+    }
+  }
 }
 
 .add_item {
   @include setTheme($themes) {
     fill: themed("colorIcon");
-    border: 1px solid themed("colorIcon");
+
   }
   border-radius: 50%;
-  width: 20px;
-  height: 20px;
-  transition: 0.3s;
+  width: 16px;
+  height: 16px;
+  position: relative;
+  top: 1px;
+
 }
 
 .task_field {
@@ -74,16 +93,17 @@
 
   .add_button {
     cursor: pointer;
-    transition: 0.3s;
+    width: 24px;
+    height: 24px;
   }
 
   .add_item {
     @include setTheme($themes) {
       color: themed("colorIcon");
     }
-    width: 28px;
-    height: 28px;
-    transition: 0.3s;
+    width: 18px;
+    height: 18px;
+
   }
 
   .add_item:hover {

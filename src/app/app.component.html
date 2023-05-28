@@ -17,13 +17,16 @@
         </app-task-item>
 
       </ul>
-
       <div class="summary">
         <p class="task_counter">{{(tasks | filter: 'active').length}} items left</p>
+        <app-filters *ngIf="!isMobile"
+                     [category]="category"
+                     (categoryChange)="changeCategory($event)"></app-filters>
         <button class="clear_btn" (click)="clearCompleted()">Clear Completed</button>
       </div>
     </section>
-    <app-filters [category]="category"
+    <app-filters *ngIf="isMobile"
+                 [category]="category"
                  (categoryChange)="changeCategory($event)"
     ></app-filters>
     <p class="text">Drag and drop to reorder list</p>

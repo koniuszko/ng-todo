@@ -1,4 +1,4 @@
-import {Component, Input, OnChanges, OnInit} from '@angular/core';
+import {Component, HostListener, Input, OnChanges, OnInit} from '@angular/core';
 import {ThemeSwitcherService} from "./services/theme-switcher.service";
 import {Task, TASKS} from "../data";
 import {TasksListService} from "./services/tasks-list.service";
@@ -17,9 +17,12 @@ export class AppComponent implements OnInit {
   tasks!: Task[];
   category: string = 'all';
 
+  isMobile: boolean;
+
   constructor(private themeService: ThemeSwitcherService, private taskListService: TasksListService) {
     this.theme = themeService.theme;
     this.tasks = taskListService.tasks;
+    this.isMobile = window.innerWidth < 560;
   }
 
   ngOnInit() {
@@ -28,13 +31,17 @@ export class AppComponent implements OnInit {
     });
   }
 
+  @HostListener('window:resize', ['$event'])
+  onResize(event: any): void {
+    this.isMobile = window.innerWidth < 560;
+  }
+
   switchTheme() {
     this.themeService.switchTheme();
     this.theme = this.themeService.theme;
   }
 
   changeCategory(category: string) {
-    console.log(category)
     this.category = category;
   }
 

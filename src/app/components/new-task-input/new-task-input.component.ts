@@ -31,6 +31,7 @@ export class NewTaskInputComponent {
       description: this.taskNameInput,
       active: true,
     }
+    if (!this.taskNameInput) return;
     this.tasksListService.addTask(newTask);
     this.taskNameInput = '';
   }

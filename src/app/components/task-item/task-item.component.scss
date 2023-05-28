@@ -15,6 +15,12 @@
   border-radius: 10px;
   overflow: hidden;
   background-color: transparent;
+
+  &:hover > svg {
+    @include setTheme($themes) {
+      fill: themed("colorFiltersHover");
+    }
+  }
 }
 
 .icon {
@@ -28,11 +34,6 @@
   user-select: none;
   pointer-events: none;
 
-  &:hover {
-    @include setTheme($themes) {
-      fill: themed("colorFiltersHover");
-    }
-  }
 }
 
 
@@ -49,7 +50,6 @@
     background-color: themed("colorBoxBackground");
   }
   padding: 0 20px;
-  display: block;
   width: 100%;
   height: 52px;
   outline: none;
@@ -112,7 +112,6 @@
     height: 24px;
     border-radius: 12px;
     cursor: pointer;
-    transition: 0.3s;
   }
 
   .checkbox.gradient {
@@ -150,20 +149,21 @@
     background-color: transparent;
     border: none;
     cursor: pointer;
-  }
 
-  .task_icon:hover {
-    @include setTheme($themes) {
-      color: themed("colorFiltersHover");
+    &:hover > svg {
+      @include setTheme($themes) {
+        fill: themed("colorFiltersHover");
+      }
     }
   }
+
 
   .underline {
     width: 540px;
   }
 
   .icon {
-    height: 24px;
-    width: 24px;
+    height: 18px;
+    width: 18px;
   }
 }
