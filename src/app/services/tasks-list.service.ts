@@ -28,11 +28,15 @@ export class TasksListService {
       return t;
     });
     this.taskChange.emit(this.tasks);
-    console.log(this.tasks)
   }
 
   deleteTask(task: Task) {
     this.tasks = this.tasks.filter(t => t.id !== task.id);
+    this.taskChange.emit(this.tasks);
+  }
+
+  clearCompleted() {
+    this.tasks = this.tasks.filter(t => t.active);
     this.taskChange.emit(this.tasks);
   }
 }

@@ -15,6 +15,7 @@ export class AppComponent implements OnInit {
   @Input()
   theme: string;
   tasks!: Task[];
+  category: string = 'all';
 
   constructor(private themeService: ThemeSwitcherService, private taskListService: TasksListService) {
     this.theme = themeService.theme;
@@ -32,11 +33,20 @@ export class AppComponent implements OnInit {
     this.theme = this.themeService.theme;
   }
 
+  changeCategory(category: string) {
+    console.log(category)
+    this.category = category;
+  }
+
   markAsDone(task: Task) {
     this.taskListService.markAsDone(task);
   }
 
   deleteTask(task: Task) {
     this.taskListService.deleteTask(task);
+  }
+
+  clearCompleted() {
+    this.taskListService.clearCompleted();
   }
 }

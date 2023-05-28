@@ -27,7 +27,7 @@ export class NewTaskInputComponent {
 
   addTask() {
     const newTask: Task = {
-      id: 20,
+      id: Math.random(),
       description: this.taskNameInput,
       active: true,
     }

@@ -1,26 +1,25 @@
-<div className="filters">
-  <button
-    id="all"
-
-    class="filter_button"
-  >
-    All
-  </button>
-  <button
-    id="active"
-
-    class=
-      "filter_button"
-
-  >
-    Active
-  </button>
-  <button
-    id="completed"
-
-    class="filter_button"
-
-  >
-    Completed
-  </button>
+<div class="{{theme}}">
+  <div class="filters">
+    <button
+      class="filter_button"
+      [ngClass]="{ active: category === 'all' }"
+      (click)="changeCategory('all')"
+    >
+      All
+    </button>
+    <button
+      class="filter_button"
+      [ngClass]="{ active: category === 'active' }"
+      (click)="changeCategory('active')"
+    >
+      Active
+    </button>
+    <button
+      class="filter_button"
+      [ngClass]="{ active: category === 'completed' }"
+      (click)="changeCategory('completed')"
+    >
+      Completed
+    </button>
+  </div>
 </div>

@@ -6,13 +6,15 @@ import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
 import {TaskItemComponent} from './components/task-item/task-item.component';
 import {FiltersComponent} from './components/filters/filters.component';
 import {FormsModule} from "@angular/forms";
+import { FilterPipe } from './pipes/filter.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
     NewTaskInputComponent,
     TaskItemComponent,
-    FiltersComponent
+    FiltersComponent,
+    FilterPipe
   ],
   imports: [
     BrowserModule,
